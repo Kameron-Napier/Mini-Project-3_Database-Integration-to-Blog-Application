@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog Feed</title>
+</head>
+<body>
+    <h2>Blog Feed</h2>
+    <form action="/create-post" method="POST">
+        <input type="text" name="title" placeholder="Title" required><br>
+        <textarea name="body" placeholder="Write your blog..." required></textarea><br>
+        <button type="submit">Create Post</button>
+    </form>
+
+    <h3>All Posts</h3>
+    <% blogs.forEach(blog => { %>
+        <h4><%= blog.title %></h4>
+        <p><%= blog.body %></p>
+        <p>By <%= blog.creator_name %> on <%= blog.date_created %></p>
+        <a href="/edit-post/<%= blog.blog_id %>">Edit</a> | <a href="/delete-post/<%= blog.blog_id %>">Delete</a>
+        <hr>
+    <% }); %>
+</body>
+</html>
